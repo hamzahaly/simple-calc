@@ -9,7 +9,7 @@
 import Foundation
 
 let resp1 = readLine(strippingNewline: true)!
-let num1 = Int.init(resp1)!
+var num1 = Int.init(resp1)!
 var nextResp = readLine(strippingNewline: true)!
 var nextNum: Int
 
@@ -21,11 +21,27 @@ var nextNum: Int
 if nextResp == "fact" {
     var fact = num1;
     var operand = num1 - 1
-    for index in 1...num1 - 1 {
-        fact =  fact * operand
-        operand -= 1
+    // factorial of 0 is 1
+    if num1 == 0 {
+        print(1)
+    // Negative factorials always have a negative sign infront
+    } else if (num1 < 0) {
+        num1 = num1 * -1
+        fact = num1
+        operand = num1 - 1
+        for index in 1...num1 - 1 {
+            fact =  fact * operand
+            operand -= 1
+        }
+        print("-" + "\(fact)")
+    // Normal factorial operations
+    } else {
+        for index in 1...num1 - 1 {
+            fact =  fact * operand
+            operand -= 1
+        }
+        print(fact)
     }
-    print(fact)
     
 // if the user wants to do a multiple number operation
 } else if (Int.init(nextResp) != nil) {
