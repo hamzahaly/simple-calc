@@ -24,30 +24,35 @@ if resp2 == "fact" {
     }
 // if the user wants to do a multiple number operation
 } else if (num2 != nil) {
-    print("we got a number response")
     
     // The next input from the user should be a number
     var nextResp = readLine(strippingNewline: true)!
-    var nextNum = Int.init(resp2)!
+    var nextNum = Int.init(resp2)! // Change response into an integer
     var count = 0;
     var sum = 0;
     sum += num1;
     var avg = 0;
     // While we are still recieving numbers from the user
     while (nextNum != nil) {
+        print("we got a number response")
         count += 1
         sum += nextNum
         nextResp = readLine(strippingNewline: true)!
+        
         nextNum = Int.init(nextResp)!
+        if nextNum == nil {
+            print("we got a non number response")
+        }
     }
     
     // User wants to do a count operation
     if (nextResp == "count") {
-        
+        print(count)
     }
     // User wants to do a average operation
     else if (nextResp == "avg") {
-        
+        avg = sum / count
+        print(avg)
     }
     
 //if the user want sto do a 2 number operation
